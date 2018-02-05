@@ -20,7 +20,7 @@ void ATankPlayerController::BeginPlay()
 void ATankPlayerController::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
-	AimTowardsrosshair();
+	AimTowardsCrosshair();
 }
 
 ATank* ATankPlayerController::GetControlledTank() const
@@ -28,14 +28,14 @@ ATank* ATankPlayerController::GetControlledTank() const
 	return Cast<ATank>( GetPawn() );
 }
 
-void ATankPlayerController::AimTowardsrosshair()
+void ATankPlayerController::AimTowardsCrosshair()
 {
 	if (!GetControlledTank()) { return; }
 
 	FVector HitLocation; // Out parameter
 	if (GetSightRayHitLocation( HitLocation )) // Has a side effect
 	{
-		UE_LOG( LogTemp, Warning, TEXT( "Hit Location %s, " ), *HitLocation.ToString() );
+		GetControlledTank()->AimAt( HitLocation );
 		//if hits the landscape
 			//TODO aim at this point
 	}
