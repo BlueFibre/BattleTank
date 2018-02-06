@@ -1,6 +1,10 @@
 // Copyright David Tootell 2018
 
+
 #include "TankPlayerController.h"
+#include "GameFramework/PlayerController.h"
+#include "Engine/World.h"
+#include "Tank.h"
 
 
 void ATankPlayerController::BeginPlay()

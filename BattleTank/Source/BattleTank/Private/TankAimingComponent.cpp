@@ -2,6 +2,10 @@
 
 #include "TankAimingComponent.h"
 #include "Tank.h"
+#include "Engine/World.h"
+#include "Components/ActorComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "TankBarrel.h"
 
 // Sets default values for this component's properties
