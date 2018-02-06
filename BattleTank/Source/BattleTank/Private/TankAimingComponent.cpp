@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "TankBarrel.h"
+#include "TankTurret.h"
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -23,11 +24,17 @@ void UTankAimingComponent::SetBarrelReference( UTankBarrel* BarrelToSet )
 	Barrel = BarrelToSet;
 }
 
+void UTankAimingComponent::SetTurretReference( UTankTurret* TurretToSet )
+{
+	Turret = TurretToSet;
+}
+
 void UTankAimingComponent::AimAt( FVector HitLocation, float LaunchSpeed )
 {
 	if (!Barrel) { return; }
 
-	auto LogTime = GetWorld()->GetTimeSeconds();
+	auto LogTime = GetWorld()->GetTimeSeconds(); // Used in bHaveAimSolution below
+
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation( FName( "Projectile" ) );
 	
@@ -64,7 +71,8 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	FRotator AimAsRotator = AimDirection.Rotation();
 	FRotator DeltaRotator = AimAsRotator - BarrelRotator;
 
-	Barrel->Elevate( DeltaRotator.Pitch ); // TODO remove magic number
+	Barrel->Elevate( DeltaRotator.Pitch );
+	Turret->Rotate( DeltaRotator.Yaw );	
 }
 
 
