@@ -26,8 +26,6 @@ protected:
 
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 	void AimAt( FVector HitLocation );
 
@@ -35,7 +33,7 @@ public:
 	void SetBarrelReference( UTankBarrel* BarrelToSet );
 
 	UPROPERTY( EditAnywhere, Category = Firing )
-	float LaunchSpeed = 100000.0f; // TODO find sensible default
+	float LaunchSpeed = 10000.0f; // TODO find sensible default
 
 private:
 	// Called to bind functionality to input
