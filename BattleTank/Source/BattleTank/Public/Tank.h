@@ -33,7 +33,7 @@ public:
 	void SetBarrelReference( UTankBarrel* BarrelToSet );
 
 	UPROPERTY( EditAnywhere, Category = Firing )
-	float LaunchSpeed = 10000.0f; // TODO find sensible default
+	float LaunchSpeed = 8000.0f; // TODO find sensible default
 
 private:
 	// Called to bind functionality to input

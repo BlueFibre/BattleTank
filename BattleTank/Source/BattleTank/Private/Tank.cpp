@@ -1,7 +1,7 @@
 // Copyright David Tootell 2018
 
-#include "TankAimingComponent.h"
 #include "Tank.h"
+#include "TankAimingComponent.h"
 
 
 

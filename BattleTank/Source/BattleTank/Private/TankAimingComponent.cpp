@@ -2,7 +2,6 @@
 
 #include "TankAimingComponent.h"
 #include "Tank.h"
-#include "Engine/World.h"
 #include "Components/ActorComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -63,9 +62,9 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	FRotator BarrelRotator = Barrel->GetForwardVector().Rotation();
 	FRotator AimAsRotator = AimDirection.Rotation();
-	FRotator DeltaRotator = (AimAsRotator - BarrelRotator);
+	FRotator DeltaRotator = AimAsRotator - BarrelRotator;
 
-	Barrel->Elevate( 5 ); // TODO remove magic number
+	Barrel->Elevate( DeltaRotator.Pitch ); // TODO remove magic number
 }
 
 
