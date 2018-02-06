@@ -1,8 +1,8 @@
 // Copyright David Tootell 2018
 
-#include "Tank.h"
 #include "TankAimingComponent.h"
-
+#include "Tank.h"
+#include "TankBarrel.h"
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -15,7 +15,7 @@ UTankAimingComponent::UTankAimingComponent()
 }
 
 
-void UTankAimingComponent::SetBarrelReference( UStaticMeshComponent * BarrelToSet )
+void UTankAimingComponent::SetBarrelReference( UTankBarrel* BarrelToSet )
 {
 	Barrel = BarrelToSet;
 }
@@ -56,8 +56,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 
 	UE_LOG( LogTemp, Warning, TEXT( "AimAsRotator = %s" ), *AimAsRotator.ToString() );
 
-	// Work-out difference between current barrel rotation + AimDirection
-		//Move the barrel the right amount this frame, given a max elevation speed + DeltaTime
+	Barrel->Elevate( 5 ); // TODO remove magic number
 }
 
 
