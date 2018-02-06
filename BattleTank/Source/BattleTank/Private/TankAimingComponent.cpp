@@ -36,8 +36,11 @@ void UTankAimingComponent::AimAt( FVector HitLocation, float LaunchSpeed )
 		StartLocation,
 		HitLocation,
 		LaunchSpeed,
+		false,
+		0,
+		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace
-	);
+		);
 	
 	if(bHaveAimSolution)
 	{
@@ -45,10 +48,11 @@ void UTankAimingComponent::AimAt( FVector HitLocation, float LaunchSpeed )
 		MoveBarrelTowards(AimDirection);
 		UE_LOG( LogTemp, Warning, TEXT( "%f: Aim solution found." ), LogTime );
 	}
-
-	
-	UE_LOG( LogTemp, Error, TEXT ("%f: No aiming solution found."), LogTime );
-	// If no solution found do nothing
+	else
+	{
+		UE_LOG( LogTemp, Error, TEXT( "%f: No aiming solution found." ), LogTime );
+		// If no solution found do nothing
+	}
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
