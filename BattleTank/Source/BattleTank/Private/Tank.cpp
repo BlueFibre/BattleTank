@@ -46,3 +46,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+void ATank::Fire() const
+{
+	UE_LOG(LogTemp, Warning, TEXT("%s: Firing!"))
+}
+

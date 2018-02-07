@@ -28,8 +28,7 @@ protected:
 
 public:	
 
-	void AimAt( FVector HitLocation );
-
+	/* SETTERS */
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference( UTankBarrel* BarrelToSet );
 
@@ -38,6 +37,13 @@ public:
 
 	UPROPERTY( EditAnywhere, Category = Firing )
 	float LaunchSpeed = 4000.0f; 
+
+	/***********/
+
+	void AimAt( FVector HitLocation );
+
+	UFUNCTION( BlueprintCallable, Category = Firing )
+		void Fire() const;
 
 private:
 	// Called to bind functionality to input
