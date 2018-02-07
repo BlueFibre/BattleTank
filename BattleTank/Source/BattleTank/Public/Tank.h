@@ -37,7 +37,7 @@ public:
 	void SetTurretReference( UTankTurret* TurretToSet );
 
 	UPROPERTY( EditAnywhere, Category = Firing )
-	float LaunchSpeed = 8000.0f; // TODO find sensible default
+	float LaunchSpeed = 4000.0f; 
 
 private:
 	// Called to bind functionality to input

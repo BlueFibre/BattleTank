@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/World.h"
 #include "TankPlayerController.generated.h"
 
 class ATank;
@@ -26,8 +27,6 @@ private:
 
 	ATank* GetControlledTank() const;
 
-	// Start the tank moving the barrel so that a shot would
-	// hit where the corsshair intersects the world.
 	void AimTowardsCrosshair();
 
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const; // Returns an OUT parameter, true if landscape hit

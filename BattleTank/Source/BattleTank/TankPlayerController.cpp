@@ -3,7 +3,6 @@
 
 #include "TankPlayerController.h"
 #include "GameFramework/PlayerController.h"
-#include "Engine/World.h"
 #include "Tank.h"
 
 
@@ -41,8 +40,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 	if (GetSightRayHitLocation( HitLocation )) // Has a side effect
 	{
 		GetControlledTank()->AimAt( HitLocation );
-		//if hits the landscape
-			//TODO aim at this point
 	}
 }
 

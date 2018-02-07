@@ -21,7 +21,7 @@ public:
 private:
 	// Sets the maximum degrees per second the barrel can move.
 	UPROPERTY( EditAnywhere, Category = Setup )
-		float MaxDegPerSecond = 10.0f;
+		float MaxDegPerSecond = 25.0f;
 	
 	
 	
