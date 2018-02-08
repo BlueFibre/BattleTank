@@ -50,17 +50,16 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ATank::Fire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("%s: Firing!"), *(this->GetName()))
-
 		if (!Barrel) { return; } // Pointer protection
 	
 		// Spawn a projectile at the socket location on barrel
-		GetWorld()->SpawnActor<AProjectile>(
-			ProjectileBlueprint,
-			Barrel->GetSocketLocation( FName( "Projectile" ) ),
-			Barrel->GetSocketRotation( FName( "Projectile" ) )
-			);
-
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+							ProjectileBlueprint,
+							Barrel->GetSocketLocation( FName( "Projectile" ) ),
+							Barrel->GetSocketRotation( FName( "Projectile" ) )
+							);
+	
+		Projectile->LaunchProjectile(LaunchSpeed);
 
 }
 
