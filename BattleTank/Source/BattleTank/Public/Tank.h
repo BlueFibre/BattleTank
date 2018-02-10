@@ -9,6 +9,7 @@
 class UTankBarrel;
 class UTankTurret;
 class UTankAimingComponent;
+class UTankMovementComponent;
 class AProjectile;
 
 UCLASS()
@@ -26,28 +27,33 @@ protected:
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
+	UPROPERTY( BlueprintReadOnly, Category = Movement )
+	UTankMovementComponent* TankMovementComponent = nullptr;
+
 
 public:	
 
-	/* SETTERS */
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference( UTankBarrel* BarrelToSet );
 
 	UFUNCTION( BlueprintCallable, Category = Setup )
 	void SetTurretReference( UTankTurret* TurretToSet );
 
-	UPROPERTY( EditAnywhere, Category = Setup )
+	UPROPERTY( EditDefaultsOnly, Category = Setup )
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
-	UPROPERTY( EditAnywhere, Category = Firing )
+	UPROPERTY( EditDefaultsOnly, Category = Firing )
 	float LaunchSpeed = 4000.0f; 
 
-	/***********/
-
-	void AimAt( FVector HitLocation );
+	UPROPERTY( EditDefaultsOnly, Category = Firing )
+		float ReloadTimeInSeconds = 3.0f;
 
 	UFUNCTION( BlueprintCallable, Category = Firing )
 		void Fire();
+
+	void AimAt( FVector HitLocation );
+
 
 private:
 	// Called to bind functionality to input
@@ -56,7 +62,6 @@ private:
 	// Local barrel reference for spawning projectile.
 	UTankBarrel* Barrel = nullptr;
 
-	float ReloadTimeInSeconds = 3.0f;
 	double LastFireTime = 0;
 		
 };

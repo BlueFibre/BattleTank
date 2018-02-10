@@ -21,15 +21,15 @@ public:
 
 private:
 	// Sets the maximum degrees per second the barrel can move.
-	UPROPERTY( EditAnywhere, Category = Setup )
+	UPROPERTY( EditDefaultsOnly, Category = Setup )
 		float MaxDegPerSecond = 10.0f; 
 
 	// Sets the maximum elevation the barrel can reach.
-	UPROPERTY( EditAnywhere, Category = Setup )
+	UPROPERTY( EditDefaultsOnly, Category = Setup )
 		float MaxElevationDeg = 40.0f;
 
 	// Sets the minimum elevation the barrel can reach.
-	UPROPERTY( EditAnywhere, Category = Setup )
+	UPROPERTY( EditDefaultsOnly, Category = Setup )
 		float MinElevationDeg = 0.0f;
 	
 };

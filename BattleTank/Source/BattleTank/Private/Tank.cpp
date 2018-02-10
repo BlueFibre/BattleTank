@@ -5,6 +5,7 @@
 #include "Engine/World.h"
 #include "TankBarrel.h"
 #include "TankAimingComponent.h"
+#include "TankMovementComponent.h"
 
 
 
@@ -16,7 +17,6 @@ ATank::ATank()
 
 	// Adds subobject to tank BP
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>( FName( "Aiming Component" ) );
-
 }
 
 // Called when the game starts or when spawned
@@ -52,7 +52,7 @@ void ATank::Fire()
 {
 	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 	
-	if (Barrel && isReloaded) 
+	if (Barrel && isReloaded && ProjectileBlueprint) 
 	{ 
 		// Spawn a projectile at the socket location on barrel
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
