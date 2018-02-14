@@ -26,3 +26,19 @@ void UTankMovementComponent::IntendTurnRight( float Throw )
 	LeftTrack->SetThrottle( Throw );
 	RightTrack->SetThrottle( -Throw );
 }
+
+void UTankMovementComponent::RequestDirectMove( const FVector& MoveVelocity, bool bForceMaxSpeed )
+{
+	
+	// The normalised vector of the tank's current facing.
+	FVector TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
+	// The normalised vector of the target velocity
+	FVector AIForwardIntention = MoveVelocity.GetSafeNormal();
+
+	float ForwardThrow = FVector::DotProduct( TankForward, AIForwardIntention );
+	IntendMoveForward( ForwardThrow );
+
+	float RightThrow = FVector::CrossProduct( TankForward, AIForwardIntention ).Z;
+	IntendTurnRight( RightThrow );
+
+}
